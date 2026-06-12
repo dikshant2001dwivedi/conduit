@@ -28,7 +28,7 @@
 **Changed to:** `Authorization: Bearer <jwt>`
 **Reason:** `Token` prefix is a DRF session-token convention that leaked into JWT usage. `Bearer` is the RFC 6750 standard. All major clients and tools default to Bearer. No live production client exists that would break.
 **Files affected:** All protected endpoints, JWT strategy
-**Implementation status:** Planned (Phase 3)
+**Implementation status:** Implemented (Phase 3)
 
 ---
 
@@ -38,7 +38,19 @@
 **Changed to:** NestJS will catch specific exception types, log real errors, and return appropriate HTTP status codes. Only expected not-found cases return 404; unexpected errors propagate as 500.
 **Reason:** Required for debuggability during migration. The bare-catch pattern makes it impossible to distinguish a missing record from a programming error.
 **Files affected:** All controllers and services
-**Implementation status:** Planned (Phases 3–6)
+**Implementation status:** Implemented (Phases 3–6)
+
+---
+
+## Finalization Checkpoint
+
+### [2026-06-12] Phase 6-7 Completion and Docs Freeze
+
+**Original:** Documentation tracked progress through Phase 5 with pending completion markers.
+**Changed to:** Phase 6 (comments) and Phase 7 (final validation) are fully complete with final contract/build verification and synchronized task/state docs.
+**Reason:** Migration reached final exit criteria for parity and documentation consistency.
+**Files affected:** `PROJECT-STATE.md`, `TASKS.md`, `MIGRATION-MAP.md`, `DOCUMENT-CHANGES.md`
+**Implementation status:** Implemented
 
 ---
 
