@@ -2,8 +2,8 @@
 
 Last Updated: 2026-06-12
 Current Migration Phase: Phase 4 - User/Profile Endpoints
-Current Task: 4.2 Implement GET /api/profiles/:username (in progress)
-Last Successful Commit: 9401868 feat(users): implement GET and PUT /api/user
+Current Task: 4.3 Implement follow and unfollow endpoints (in progress)
+Last Successful Commit: d8f4fed chore(profiles): scaffold profiles module
 
 ## Completed Tasks
 - Migration workflow converted from Windsurf/Claude format to GitHub Copilot format
@@ -31,6 +31,7 @@ Last Successful Commit: 9401868 feat(users): implement GET and PUT /api/user
 - 3.3 Implement POST /api/users/login (JWT issuance, status 202)
 - 3.4 Implement GET and PUT /api/user (protected Bearer routes)
 - 4.1 Scaffold profiles module (build pass)
+- 4.2 Implement GET /api/profiles/:username (envelope + following flag)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -50,8 +51,8 @@ Last Successful Commit: 9401868 feat(users): implement GET and PUT /api/user
 - Profiles module build/contract checkpoint: complete (pass)
 
 ## Next Tasks
-1. 4.2 Implement GET /api/profiles/:username
-2. 4.3 Implement follow and unfollow endpoints
+1. 4.3 Implement follow and unfollow endpoints
+2. 5.1 Scaffold articles, tags, and comments modules
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
