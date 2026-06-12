@@ -2,8 +2,8 @@
 
 Last Updated: 2026-06-12
 Current Migration Phase: Phase 3 - Authentication
-Current Task: 3.2 Implement POST /api/users (in progress)
-Last Successful Commit: 4f01d0c feat(prisma): apply initial database migration
+Current Task: 3.3 Implement POST /api/users/login (in progress)
+Last Successful Commit: c0185a1 chore(auth): scaffold auth and users modules
 
 ## Completed Tasks
 - Migration workflow converted from Windsurf/Claude format to GitHub Copilot format
@@ -27,6 +27,7 @@ Last Successful Commit: 4f01d0c feat(prisma): apply initial database migration
 - 2.3 Apply Prisma migration (init migration applied, client generated)
 - 2.4 Add PrismaModule and PrismaService (DI wiring build pass)
 - 3.1 Scaffold auth and users modules (build pass)
+- 3.2 Implement POST /api/users (password hash + response envelope)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -41,10 +42,11 @@ Last Successful Commit: 4f01d0c feat(prisma): apply initial database migration
 - Prisma migrate dev init: complete (pass)
 - Prisma module/service DI build check: complete (pass)
 - Auth/users scaffold modules compile check: complete (pass)
+- Auth contract tests on NestJS: complete (pass)
 
 ## Next Tasks
-1. 3.2 Implement POST /api/users
-2. 3.3 Implement POST /api/users/login
+1. 3.3 Implement POST /api/users/login
+2. 3.4 Implement GET and PUT /api/user
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
