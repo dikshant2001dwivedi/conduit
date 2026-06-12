@@ -1,9 +1,9 @@
 # PROJECT-STATE
 
 Last Updated: 2026-06-12
-Current Migration Phase: Phase 3 - Authentication
-Current Task: 3.4 Implement GET and PUT /api/user (in progress)
-Last Successful Commit: 4576375 feat(auth): implement POST /api/users
+Current Migration Phase: Phase 4 - User/Profile Endpoints
+Current Task: 4.1 Scaffold profiles module (in progress)
+Last Successful Commit: 01b0284 feat(auth): implement POST /api/users/login
 
 ## Completed Tasks
 - Migration workflow converted from Windsurf/Claude format to GitHub Copilot format
@@ -29,6 +29,7 @@ Last Successful Commit: 4576375 feat(auth): implement POST /api/users
 - 3.1 Scaffold auth and users modules (build pass)
 - 3.2 Implement POST /api/users (password hash + response envelope)
 - 3.3 Implement POST /api/users/login (JWT issuance, status 202)
+- 3.4 Implement GET and PUT /api/user (protected Bearer routes)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -44,10 +45,11 @@ Last Successful Commit: 4576375 feat(auth): implement POST /api/users
 - Prisma module/service DI build check: complete (pass)
 - Auth/users scaffold modules compile check: complete (pass)
 - Auth contract tests on NestJS: complete (pass)
+- Phase 3 build verification: complete (pass)
 
 ## Next Tasks
-1. 3.4 Implement GET and PUT /api/user
-2. 4.1 Scaffold profiles module
+1. 4.1 Scaffold profiles module
+2. 4.2 Implement GET /api/profiles/:username
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
