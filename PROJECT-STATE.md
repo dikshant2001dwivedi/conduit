@@ -1,9 +1,9 @@
 # PROJECT-STATE
 
 Last Updated: 2026-06-12
-Current Migration Phase: Phase 1 - NestJS Setup
-Current Task: 1.1 Scaffold NestJS app (in progress)
-Last Successful Commit: ef96747 test(contracts): add profile endpoint contracts
+Current Migration Phase: Phase 3 - Authentication
+Current Task: 3.1 Scaffold auth and users modules (not started)
+Last Successful Commit: 7fc909c feat(core): configure swagger docs
 
 ## Completed Tasks
 - Migration workflow converted from Windsurf/Claude format to GitHub Copilot format
@@ -17,6 +17,15 @@ Last Successful Commit: ef96747 test(contracts): add profile endpoint contracts
 - 0.3 Implement auth/user contract tests (7/7 passing against Django at :8000)
 - 0.4 Implement profile contract tests (5/5 passing against Django at :8000)
 - 0.5 Implement article/comment/tag contract tests (23/23 full suite passing against Django at :8000)
+- 1.1 Scaffold NestJS app (build pass, start:dev verified)
+- 1.2 Install migration dependencies (Prisma/JWT/validation/swagger/testing)
+- 1.3 Configure strict TS + config module (global ConfigModule + .env.example)
+- 1.4 Add global validation and error envelope filter
+- 1.5 Configure Swagger endpoint with Bearer auth
+- 2.1 Create conduit_nest database (verified on local postgres)
+- 2.2 Define Prisma schema (validate pass)
+- 2.3 Apply Prisma migration (init migration applied, client generated)
+- 2.4 Add PrismaModule and PrismaService (DI wiring build pass)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -26,11 +35,14 @@ Last Successful Commit: ef96747 test(contracts): add profile endpoint contracts
 - Profile contract tests against Django: complete (pass)
 - Contract tests against Django (Phase 0 gate): complete (full suite pass)
 - Contract tests against NestJS: not started
-- TypeScript build: not started
+- TypeScript build: complete for Phase 1 setup tasks (pass)
+- Prisma schema validate: complete (pass)
+- Prisma migrate dev init: complete (pass)
+- Prisma module/service DI build check: complete (pass)
 
 ## Next Tasks
-1. 1.1 Scaffold NestJS app
-2. 1.2 Install migration dependencies
+1. 3.1 Scaffold auth and users modules
+2. 3.2 Implement POST /api/users
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
