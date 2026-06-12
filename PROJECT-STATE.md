@@ -2,8 +2,8 @@
 
 Last Updated: 2026-06-12
 Current Migration Phase: Phase 5 - Articles and Tags
-Current Task: 5.1 Scaffold articles, tags, and comments modules (in progress)
-Last Successful Commit: 884f070 feat(profiles): implement GET profile endpoint
+Current Task: 5.2 Implement create/list articles with filters (in progress)
+Last Successful Commit: 42c4c46 feat(profiles): implement follow and unfollow endpoints
 
 ## Completed Tasks
 - Migration workflow converted from Windsurf/Claude format to GitHub Copilot format
@@ -33,6 +33,7 @@ Last Successful Commit: 884f070 feat(profiles): implement GET profile endpoint
 - 4.1 Scaffold profiles module (build pass)
 - 4.2 Implement GET /api/profiles/:username (envelope + following flag)
 - 4.3 Implement follow and unfollow endpoints
+- 5.1 Scaffold articles, tags, and comments modules (build pass)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -51,10 +52,11 @@ Last Successful Commit: 884f070 feat(profiles): implement GET profile endpoint
 - Phase 3 build verification: complete (pass)
 - Profiles module build/contract checkpoint: complete (pass)
 - Profiles contract tests against NestJS: complete (pass)
+- Articles/tags/comments build + contract checkpoint: complete (pass)
 
 ## Next Tasks
-1. 5.1 Scaffold articles, tags, and comments modules
-2. 5.2 Implement create/list articles with filters
+1. 5.2 Implement create/list articles with filters
+2. 5.3 Implement feed endpoint preserving bug-001
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
