@@ -2,8 +2,8 @@
 
 Last Updated: 2026-06-12
 Current Migration Phase: Phase 5 - Articles and Tags
-Current Task: 5.4 Implement article detail endpoints preserving bug-002 (in progress)
-Last Successful Commit: 866c6e2 feat(articles): implement create and list article endpoints
+Current Task: 5.5 Implement favorite and unfavorite endpoints (in progress)
+Last Successful Commit: 89234c7 feat(articles): implement feed endpoint preserving bug-001
 
 ## Completed Tasks
 - Migration workflow converted from Windsurf/Claude format to GitHub Copilot format
@@ -36,6 +36,7 @@ Last Successful Commit: 866c6e2 feat(articles): implement create and list articl
 - 5.1 Scaffold articles, tags, and comments modules (build pass)
 - 5.2 Implement create/list articles with filters
 - 5.3 Implement feed endpoint preserving BUG-001 (`comments` + `articleCount`)
+- 5.4 Implement article get/update/delete preserving BUG-002 (frozen `updatedAt`)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -57,8 +58,8 @@ Last Successful Commit: 866c6e2 feat(articles): implement create and list articl
 - Articles/tags/comments build + contract checkpoint: complete (pass)
 
 ## Next Tasks
-1. 5.4 Implement article detail endpoints preserving bug-002
-2. 5.5 Implement favorite and unfavorite endpoints
+1. 5.5 Implement favorite and unfavorite endpoints
+2. 5.6 Implement GET /api/tags
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
