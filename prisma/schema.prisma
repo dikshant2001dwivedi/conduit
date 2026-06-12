@@ -43,7 +43,7 @@ model Article {
   description   String       @default("") @map("summary")
   body          String       @default("") @map("content")
   createdAt     DateTime     @default(now()) @map("created")
-  updatedAt     DateTime     @default(now()) @map("updated")
+  updatedAt     DateTime     @updatedAt @map("updated")
   authorId      Int
   author        User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
   comments      Comment[]

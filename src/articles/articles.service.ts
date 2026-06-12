@@ -120,8 +120,8 @@ export class ArticlesService {
     });
 
     return {
-      comments: records.map((record) => this.serializeArticle(record, currentUser.id)),
-      articleCount: records.length
+      articles: records.map((record) => this.serializeArticle(record, currentUser.id)),
+      articlesCount: records.length
     };
   }
 

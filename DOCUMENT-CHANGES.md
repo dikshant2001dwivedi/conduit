@@ -54,10 +54,10 @@
 
 ---
 
-## Known Bugs — Preserved in NestJS (Documented)
+## Legacy Bugs From Django (Historical)
 
-The following bugs exist in the Django source. They are **preserved as-is** in the NestJS
-implementation to maintain contract parity. They are candidates for a future cleanup pass.
+The following bugs exist in the Django source. They were initially preserved during migration for
+contract parity and were fixed during post-migration cleanup.
 
 ---
 
@@ -66,11 +66,11 @@ implementation to maintain contract parity. They are candidates for a future cle
 **Location:** `articles/views.py` → `ArticleView.feed()`
 **Django behaviour:** `GET /api/articles/feed` returns `{ "comments": [...], "articleCount": N }`
 **Expected (RealWorld spec):** `{ "articles": [...], "articlesCount": N }`
-**Preserved in NestJS:** Yes — NestJS will return `comments` key and `articleCount` (no trailing `s`) to match Django output
+**Preserved in NestJS during migration:** Yes
 **Risk:** Any client consuming the feed endpoint receives a misnamed key
 **Fix effort:** Trivial — rename one key in the response DTO
-**Tracking:** Resolve in a post-migration cleanup PR
-**Contract test note:** Contract test for feed MUST assert `comments` key and `articleCount` (not `articles`/`articlesCount`)
+**Tracking:** Resolved in post-migration cleanup
+**Current NestJS status:** returns `articles` and `articlesCount`
 
 ---
 
@@ -79,11 +79,11 @@ implementation to maintain contract parity. They are candidates for a future cle
 **Location:** `articles/models.py` → `Article.updated = models.DateTimeField(auto_now_add=True)`
 **Django behaviour:** `updatedAt` is set once at creation and never updated when the article is edited. Uses `auto_now_add` instead of `auto_now`.
 **Expected:** `updatedAt` should reflect the last modification time
-**Preserved in NestJS:** Yes — Prisma schema will use `@default(now())` without `@updatedAt` for the `updated` field, replicating the frozen-timestamp behaviour
+**Preserved in NestJS during migration:** Yes
 **Risk:** Consumers cannot rely on `updatedAt` to detect article edits
 **Fix effort:** Low — change `@default(now())` to `@updatedAt` in Prisma schema + migration
-**Tracking:** Resolve in a post-migration cleanup PR
-**Contract test note:** Contract test for article update MUST assert `updatedAt` equals the original creation timestamp (not a new timestamp)
+**Tracking:** Resolved in post-migration cleanup
+**Current NestJS status:** `updatedAt` mutates on article updates
 
 ---
 
@@ -91,7 +91,25 @@ implementation to maintain contract parity. They are candidates for a future cle
 
 | ID      | Description                              | Effort | Phase to fix |
 |---------|------------------------------------------|--------|--------------|
-| BUG-001 | Feed response key `comments` → `articles`| Trivial | Post Phase 7 |
-| BUG-002 | `updatedAt` frozen on edit               | Low     | Post Phase 7 |
 | CLEAN-001 | Add `articlesCount` to list responses  | Low     | Post Phase 7 |
 | CLEAN-002 | Standardise pagination (limit/offset)  | Medium  | Post Phase 7 |
+
+---
+
+## Post-Migration Cleanup Applied
+
+### [2026-06-12] BUG-001 Fix - Feed keys normalized
+
+**Original (Django):** `GET /api/articles/feed` returned `{ comments, articleCount }`.
+**Changed to:** NestJS now returns `{ articles, articlesCount }`.
+**Reason:** Align with RealWorld contract shape and remove legacy key mismatch.
+**Files affected:** `src/articles/articles.service.ts`, `test/contracts/articles.contract.spec.ts`
+**Implementation status:** Implemented
+
+### [2026-06-12] BUG-002 Fix - Article `updatedAt` now mutates on edit
+
+**Original (Django):** `updatedAt` remained frozen after article updates.
+**Changed to:** Prisma `Article.updatedAt` now uses `@updatedAt`, so edit operations refresh timestamp.
+**Reason:** Restore expected update metadata behavior for consumers.
+**Files affected:** `prisma/schema.prisma`, `test/contracts/articles.contract.spec.ts`
+**Implementation status:** Implemented

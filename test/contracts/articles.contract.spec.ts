@@ -82,7 +82,7 @@ describe("Articles contracts", () => {
     expect(typeof article.slug).toBe("string");
   });
 
-  it("BUG-001: GET /api/articles/feed returns comments + articleCount keys", async () => {
+  it("GET /api/articles/feed returns articles + articlesCount keys", async () => {
     const author = await registerAndLogin();
     const follower = await registerAndLogin();
 
@@ -97,12 +97,12 @@ describe("Articles contracts", () => {
       .set("Authorization", authHeader(follower.token));
 
     expect(response.status).toBe(200);
-    expect(Array.isArray(response.body.comments)).toBe(true);
-    expect(typeof response.body.articleCount).toBe("number");
-    expect(response.body.articles).toBeUndefined();
+    expect(Array.isArray(response.body.articles)).toBe(true);
+    expect(typeof response.body.articlesCount).toBe("number");
+    expect(response.body.comments).toBeUndefined();
   });
 
-  it("BUG-002: PUT /api/articles/:slug keeps updatedAt frozen", async () => {
+  it("PUT /api/articles/:slug updates updatedAt on article edits", async () => {
     const actor = await registerAndLogin();
     const created = await createArticle(actor.token);
     const slug = created.article.slug as string;
@@ -132,6 +132,9 @@ describe("Articles contracts", () => {
 
     expect(updateResponse.status).toBe(200);
     expect(updated.description).toBe("Updated description via contract test");
-    expect(updatedUpdatedAt).toBe(createdUpdatedAt);
+    expect(updatedUpdatedAt).not.toBe(createdUpdatedAt);
+    expect(Date.parse(updatedUpdatedAt as string)).toBeGreaterThanOrEqual(
+      Date.parse(createdUpdatedAt as string)
+    );
   });
 });

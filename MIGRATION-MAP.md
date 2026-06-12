@@ -43,7 +43,7 @@ Django (`articles/models.py`):
 
 NestJS/Prisma target:
 - Article table + Tag table + M2M joins
-- preserve BUG-002 (`updatedAt` frozen) during migration
+- `updatedAt` auto-updates on edits (post-migration cleanup applied)
 
 ### Comment
 Django (`comments/models.py`):
@@ -79,7 +79,7 @@ Base prefix: `/api`
 |---|---|---|---|
 | GET | /articles | /articles | filters: tag/author/favorited/limit/offset |
 | POST | /articles | /articles | auth required |
-| GET | /articles/feed | /articles/feed | preserve BUG-001 response key |
+| GET | /articles/feed | /articles/feed | returns `articles` + `articlesCount` |
 | GET | /articles/:slug | /articles/:slug | optional auth |
 | PUT | /articles/:slug | /articles/:slug | author only |
 | DELETE | /articles/:slug | /articles/:slug | author only |
@@ -142,10 +142,10 @@ Source tests exist:
 These are behavior references, not sufficient migration gates alone.
 Primary migration gate is contract tests in target repo under `test/contracts`.
 
-## 9) Known Bugs to Preserve During Migration
+## 9) Legacy Bug Status
 
-- BUG-001: `/api/articles/feed` returns `comments` key and `articleCount`
-- BUG-002: `updatedAt` does not change on article updates
+- BUG-001 fixed in NestJS: `/api/articles/feed` now returns `articles` and `articlesCount`
+- BUG-002 fixed in NestJS: `updatedAt` now changes on article updates
 
 See DOCUMENT-CHANGES.md.
 
@@ -166,7 +166,8 @@ See DOCUMENT-CHANGES.md.
 ## 11) Contract Testing Strategy
 
 ### Goal
-Use existing Django behavior as executable contracts, then pass the same contracts against NestJS.
+Use existing Django behavior as executable contracts, then pass contracts against NestJS.
+Post-migration cleanups may intentionally diverge from Django where documented in DOCUMENT-CHANGES.md.
 
 ### Before each migration task
 1. Run source baseline:

@@ -46,6 +46,8 @@ Last Successful Commit: b516840 chore(release): pass final build verification
 - 7.1 Run full contract suite against NestJS (23/23 passing)
 - 7.2 Build and static validation (Nest build passing)
 - 7.3 Final docs checkpoint (state/tasks/map/changes synchronized)
+- Post-migration cleanup: fixed BUG-001 feed keys (`articles`/`articlesCount`)
+- Post-migration cleanup: fixed BUG-002 (`updatedAt` mutates on article updates)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -74,6 +76,7 @@ Last Successful Commit: b516840 chore(release): pass final build verification
 - Phase 7.1 full contract suite against NestJS: complete (pass, 23/23)
 - Phase 7.2 production build verification: complete (pass)
 - Phase 7.3 documentation consistency checkpoint: complete (pass)
+- Post-migration cleanup verification: complete (build pass + full contracts 23/23)
 
 ## Next Tasks
 1. None
@@ -86,4 +89,4 @@ Last Successful Commit: b516840 chore(release): pass final build verification
 - Use TASKS.md as the execution checklist.
 - Use MIGRATION-MAP.md for model and endpoint mapping.
 - Use DOCUMENT-CHANGES.md for preserved bugs and intentional deviations.
-- BUG-001 and BUG-002 are intentionally preserved during migration.
+- BUG-001 and BUG-002 were preserved during migration and fixed in post-migration cleanup.
