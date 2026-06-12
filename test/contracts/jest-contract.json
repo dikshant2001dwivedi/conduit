@@ -1,0 +1,9 @@
+{
+  "rootDir": "../..",
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "testMatch": ["<rootDir>/test/contracts/**/*.contract.spec.ts"],
+  "setupFilesAfterEnv": ["<rootDir>/test/contracts/setup.ts"],
+  "testTimeout": 30000,
+  "verbose": true
+}
