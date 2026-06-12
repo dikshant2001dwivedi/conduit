@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int       @id @default(autoincrement())
+  email          String    @unique
+  username       String    @db.VarChar(60)
+  password       String
+  bio            String    @default("")
+  image          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  articles       Article[]
+  comments       Comment[]
+  following      Follow[]  @relation("Following")
+  followedBy     Follow[]  @relation("FollowedBy")
+  favorites      Favorite[]
+
+  @@map("users")
+}
+
+model Follow {
+  followerId  Int
+  followingId Int
+  createdAt   DateTime @default(now())
+  follower    User     @relation("Following", fields: [followerId], references: [id], onDelete: Cascade)
+  following   User     @relation("FollowedBy", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@id([followerId, followingId])
+  @@map("followers")
+}
+
+model Article {
+  id            Int          @id @default(autoincrement())
+  slug          String       @unique @db.VarChar(255)
+  title         String       @unique @db.VarChar(150)
+  description   String       @default("") @map("summary")
+  body          String       @default("") @map("content")
+  createdAt     DateTime     @default(now()) @map("created")
+  updatedAt     DateTime     @default(now()) @map("updated")
+  authorId      Int
+  author        User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments      Comment[]
+  favorites     Favorite[]
+  articleTags   ArticleTag[]
+
+  @@map("articles")
+}
+
+model Favorite {
+  userId     Int
+  articleId  Int
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article    Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, articleId])
+  @@map("favorites")
+}
+
+model Comment {
+  id         Int      @id @default(autoincrement())
+  body       String   @map("content")
+  createdAt  DateTime @default(now()) @map("created")
+  updatedAt  DateTime @updatedAt @map("updated")
+  authorId   Int
+  articleId  Int
+  author     User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  article    Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model Tag {
+  id           Int          @id @default(autoincrement())
+  name         String       @unique
+  slug         String       @unique
+  articleTags  ArticleTag[]
+
+  @@map("tags")
+}
+
+model ArticleTag {
+  articleId Int
+  tagId     Int
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([articleId, tagId])
+  @@map("article_tags")
+}
