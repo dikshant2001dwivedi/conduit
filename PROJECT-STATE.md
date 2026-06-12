@@ -2,7 +2,7 @@
 
 Last Updated: 2026-06-12
 Current Migration Phase: Phase 6 - Comments
-Current Task: 6.1 Scaffold comments module (already implemented in Phase 5 per requested scope)
+Current Task: 6.2 Implement list and create comments
 Last Successful Commit: e40b9ba feat(comments): implement comment endpoints
 
 ## Completed Tasks
@@ -40,6 +40,7 @@ Last Successful Commit: e40b9ba feat(comments): implement comment endpoints
 - 5.5 Implement favorite/unfavorite endpoints
 - 5.6 Implement GET /api/tags (distinct tags)
 - 5.7 Implement comments list/create/delete (POST status 200, author-only delete)
+- 6.1 Scaffold comments module (verified existing scaffold and build pass)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -62,10 +63,11 @@ Last Successful Commit: e40b9ba feat(comments): implement comment endpoints
 - Comments contract tests against NestJS: complete (pass)
 - Final Phase 3-5 full contract suite against NestJS: complete (pass)
 - Final Phase 3-5 build verification: complete (pass)
+- Phase 6.1 scaffold build verification: complete (pass)
 
 ## Next Tasks
-1. Reconcile TASKS.md phase boundaries (comments domain was completed during requested Phase 5 scope)
-2. Begin Phase 7 final validation/docs checkpoint when ready
+1. Run comments domain contract tests for Phase 6.2 list/create verification
+2. Complete Phase 6.3 delete verification with comments contracts
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
