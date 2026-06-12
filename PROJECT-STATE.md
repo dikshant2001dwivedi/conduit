@@ -1,9 +1,9 @@
 # PROJECT-STATE
 
 Last Updated: 2026-06-12
-Current Migration Phase: Phase 5 - Articles and Tags
-Current Task: Phase 3-5 final validation (in progress)
-Last Successful Commit: 68c5413 feat(tags): implement GET /api/tags
+Current Migration Phase: Phase 6 - Comments
+Current Task: 6.1 Scaffold comments module (already implemented in Phase 5 per requested scope)
+Last Successful Commit: e40b9ba feat(comments): implement comment endpoints
 
 ## Completed Tasks
 - Migration workflow converted from Windsurf/Claude format to GitHub Copilot format
@@ -48,7 +48,7 @@ Last Successful Commit: 68c5413 feat(tags): implement GET /api/tags
 - Auth contract tests against Django: complete (pass)
 - Profile contract tests against Django: complete (pass)
 - Contract tests against Django (Phase 0 gate): complete (full suite pass)
-- Contract tests against NestJS: not started
+- Contract tests against NestJS: complete (full suite pass, 23/23)
 - TypeScript build: complete for Phase 1 setup tasks (pass)
 - Prisma schema validate: complete (pass)
 - Prisma migrate dev init: complete (pass)
@@ -60,10 +60,12 @@ Last Successful Commit: 68c5413 feat(tags): implement GET /api/tags
 - Profiles contract tests against NestJS: complete (pass)
 - Articles/tags/comments build + contract checkpoint: complete (pass)
 - Comments contract tests against NestJS: complete (pass)
+- Final Phase 3-5 full contract suite against NestJS: complete (pass)
+- Final Phase 3-5 build verification: complete (pass)
 
 ## Next Tasks
-1. Run full contract suite against NestJS
-2. Final build verification and phase handoff update
+1. Reconcile TASKS.md phase boundaries (comments domain was completed during requested Phase 5 scope)
+2. Begin Phase 7 final validation/docs checkpoint when ready
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
