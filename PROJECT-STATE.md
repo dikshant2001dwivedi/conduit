@@ -1,9 +1,9 @@
 # PROJECT-STATE
 
 Last Updated: 2026-06-12
-Current Migration Phase: Phase 0 - Contract Capture
-Current Task: 0.5 Implement article/comment/tag contract tests (in progress)
-Last Successful Commit: 2280b9b test(contracts): complete phase0 tasks 0.1-0.3
+Current Migration Phase: Phase 1 - NestJS Setup
+Current Task: 1.1 Scaffold NestJS app (in progress)
+Last Successful Commit: ef96747 test(contracts): add profile endpoint contracts
 
 ## Completed Tasks
 - Migration workflow converted from Windsurf/Claude format to GitHub Copilot format
@@ -16,6 +16,7 @@ Last Successful Commit: 2280b9b test(contracts): complete phase0 tasks 0.1-0.3
 - 0.2 Create contract test harness in conduit (Jest contract config + test discovery verified)
 - 0.3 Implement auth/user contract tests (7/7 passing against Django at :8000)
 - 0.4 Implement profile contract tests (5/5 passing against Django at :8000)
+- 0.5 Implement article/comment/tag contract tests (23/23 full suite passing against Django at :8000)
 
 ## Verification Status
 - Documentation workflow alignment: complete
@@ -23,13 +24,13 @@ Last Successful Commit: 2280b9b test(contracts): complete phase0 tasks 0.1-0.3
 - Contract harness in conduit: complete (test discovery verified)
 - Auth contract tests against Django: complete (pass)
 - Profile contract tests against Django: complete (pass)
-- Contract tests against Django (Phase 0 gate): in progress (articles/comments/tags pending)
+- Contract tests against Django (Phase 0 gate): complete (full suite pass)
 - Contract tests against NestJS: not started
 - TypeScript build: not started
 
 ## Next Tasks
-1. 0.5 Capture article/comment/tag contracts against Django
-2. Phase 0 gate: run full contract suite against Django (:8000)
+1. 1.1 Scaffold NestJS app
+2. 1.2 Install migration dependencies
 
 ## Current Repositories
 - Source: ../realWorld-DjangoRestFramework (read-only migration reference)
